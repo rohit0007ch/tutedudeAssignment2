@@ -1,0 +1,88 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(ProfileCardApp());
+}
+
+class ProfileCardApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Profile Card',
+      home: Scaffold(
+        backgroundColor: Colors.grey[200],
+        body: Center(
+          child: ProfileCard(),
+        ),
+      ),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+class ProfileCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 300,
+      height: 250,
+      padding: EdgeInsets.all(16),
+      margin: EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 12,
+            offset: Offset(0, 6),
+          ),
+        ],
+      ),
+      child: const Row(
+        children: [
+          // Circular profile image
+          CircleAvatar(
+            radius: 35,
+            backgroundImage: NetworkImage(
+              'https://i.pravatar.cc/150?img=3', // You can replace with your asset
+            ),
+          ),
+          SizedBox(width: 16),
+          // Text info
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'John Doe',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
+                ),
+                SizedBox(height: 4),
+                Text(
+                  'Flutter Developer',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.black54,
+                  ),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  '"Building beautiful UIs with Flutter!"',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.black45,
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
